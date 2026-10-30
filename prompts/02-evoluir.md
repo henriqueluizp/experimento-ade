@@ -1,0 +1,9 @@
+Leia o repositório existente, `BENCH_CONFIG.json` e o contrato. Implemente uma evolução do Rótulo Claro: comparar duas leituras salvas e exportar a comparação em CSV. Faça um plano curto, implemente e verifique. Respeite o limite de agentes configurado.
+
+Permita escolher exatamente dois produtos do histórico e escolher base comum de 100 g ou de 100 ml. Use valores revisados e persistidos. Quando a coluna comum já existir no rótulo, prefira-a; quando só houver porção compatível, calcule valor × 100 / quantidade da porção e sinalize que foi calculado. Não converta ml em g, não estime densidade e não calcule a partir de porção ausente, zero ou inválida. Mostre indisponível com explicação nesses casos.
+
+Mostre diferenças absolutas para campos numéricos exatos com unidades compatíveis, indicando a direção produto B menos A. Não eleja produto vencedor nem faça aconselhamento nutricional. Campos ausentes e limites do tipo “<” devem permanecer identificados; não os use como números exatos para diferença. Normalize g/mg somente quando dimensionalmente válido, exibindo a unidade final. Preserve também o valor original e a origem “impresso” ou “calculado”.
+
+Exporte CSV UTF-8 com cabeçalhos e os mesmos dados exibidos, usando delimitador ponto e vírgula e escape correto de aspas/quebras de linha. Proteja campos textuais contra interpretação como fórmula de planilha. Nome, base, unidade e origem precisam aparecer. Nunca apague nem modifique a extração original ao comparar.
+
+Valide pelo menos: 120 kcal em porção de 30 g resulta em 400 kcal/100 g; 80 mg de sódio/20 g resulta em 400 mg/100 g; produto apenas por 100 ml não pode entrar em comparação por 100 g sem informação suficiente. Reexecute testes iniciais, persistência e exportação JSON. Entregue testes novos, README atualizado, relatório do que verificou e diff/commit. Preserve os fluxos existentes e registre qualquer regressão que não conseguir resolver.

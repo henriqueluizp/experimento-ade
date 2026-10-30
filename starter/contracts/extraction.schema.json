@@ -1,0 +1,591 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NutritionExtraction",
+  "description": "Extracao bruta: somente colunas impressas. IDs de coluna unicos; validar unicidade no servidor. Ausente e null, zero explicito e 0.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "product_name",
+    "columns",
+    "warnings"
+  ],
+  "properties": {
+    "status": {
+      "enum": [
+        "ok",
+        "review_required",
+        "not_label"
+      ]
+    },
+    "product_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "columns": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "basis_amount",
+          "basis_unit",
+          "nutrients"
+        ],
+        "properties": {
+          "id": {
+            "enum": [
+              "per_serving",
+              "per_100g",
+              "per_100ml"
+            ]
+          },
+          "basis_amount": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "exclusiveMinimum": 0
+          },
+          "basis_unit": {
+            "enum": [
+              "g",
+              "ml",
+              null
+            ]
+          },
+          "nutrients": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "energy_kcal",
+              "energy_kj",
+              "carbohydrates",
+              "total_sugars",
+              "added_sugars",
+              "protein",
+              "total_fat",
+              "saturated_fat",
+              "trans_fat",
+              "fiber",
+              "sodium"
+            ],
+            "properties": {
+              "energy_kcal": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "value",
+                      "unit",
+                      "qualifier",
+                      "raw"
+                    ],
+                    "properties": {
+                      "value": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "unit": {
+                        "enum": [
+                          "g",
+                          "mg",
+                          "kcal",
+                          "kJ"
+                        ]
+                      },
+                      "qualifier": {
+                        "enum": [
+                          "eq",
+                          "lt"
+                        ]
+                      },
+                      "raw": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              },
+              "energy_kj": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "value",
+                      "unit",
+                      "qualifier",
+                      "raw"
+                    ],
+                    "properties": {
+                      "value": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "unit": {
+                        "enum": [
+                          "g",
+                          "mg",
+                          "kcal",
+                          "kJ"
+                        ]
+                      },
+                      "qualifier": {
+                        "enum": [
+                          "eq",
+                          "lt"
+                        ]
+                      },
+                      "raw": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              },
+              "carbohydrates": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "value",
+                      "unit",
+                      "qualifier",
+                      "raw"
+                    ],
+                    "properties": {
+                      "value": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "unit": {
+                        "enum": [
+                          "g",
+                          "mg",
+                          "kcal",
+                          "kJ"
+                        ]
+                      },
+                      "qualifier": {
+                        "enum": [
+                          "eq",
+                          "lt"
+                        ]
+                      },
+                      "raw": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              },
+              "total_sugars": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "value",
+                      "unit",
+                      "qualifier",
+                      "raw"
+                    ],
+                    "properties": {
+                      "value": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "unit": {
+                        "enum": [
+                          "g",
+                          "mg",
+                          "kcal",
+                          "kJ"
+                        ]
+                      },
+                      "qualifier": {
+                        "enum": [
+                          "eq",
+                          "lt"
+                        ]
+                      },
+                      "raw": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              },
+              "added_sugars": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "value",
+                      "unit",
+                      "qualifier",
+                      "raw"
+                    ],
+                    "properties": {
+                      "value": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "unit": {
+                        "enum": [
+                          "g",
+                          "mg",
+                          "kcal",
+                          "kJ"
+                        ]
+                      },
+                      "qualifier": {
+                        "enum": [
+                          "eq",
+                          "lt"
+                        ]
+                      },
+                      "raw": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              },
+              "protein": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "value",
+                      "unit",
+                      "qualifier",
+                      "raw"
+                    ],
+                    "properties": {
+                      "value": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "unit": {
+                        "enum": [
+                          "g",
+                          "mg",
+                          "kcal",
+                          "kJ"
+                        ]
+                      },
+                      "qualifier": {
+                        "enum": [
+                          "eq",
+                          "lt"
+                        ]
+                      },
+                      "raw": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              },
+              "total_fat": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "value",
+                      "unit",
+                      "qualifier",
+                      "raw"
+                    ],
+                    "properties": {
+                      "value": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "unit": {
+                        "enum": [
+                          "g",
+                          "mg",
+                          "kcal",
+                          "kJ"
+                        ]
+                      },
+                      "qualifier": {
+                        "enum": [
+                          "eq",
+                          "lt"
+                        ]
+                      },
+                      "raw": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              },
+              "saturated_fat": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "value",
+                      "unit",
+                      "qualifier",
+                      "raw"
+                    ],
+                    "properties": {
+                      "value": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "unit": {
+                        "enum": [
+                          "g",
+                          "mg",
+                          "kcal",
+                          "kJ"
+                        ]
+                      },
+                      "qualifier": {
+                        "enum": [
+                          "eq",
+                          "lt"
+                        ]
+                      },
+                      "raw": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              },
+              "trans_fat": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "value",
+                      "unit",
+                      "qualifier",
+                      "raw"
+                    ],
+                    "properties": {
+                      "value": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "unit": {
+                        "enum": [
+                          "g",
+                          "mg",
+                          "kcal",
+                          "kJ"
+                        ]
+                      },
+                      "qualifier": {
+                        "enum": [
+                          "eq",
+                          "lt"
+                        ]
+                      },
+                      "raw": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              },
+              "fiber": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "value",
+                      "unit",
+                      "qualifier",
+                      "raw"
+                    ],
+                    "properties": {
+                      "value": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "unit": {
+                        "enum": [
+                          "g",
+                          "mg",
+                          "kcal",
+                          "kJ"
+                        ]
+                      },
+                      "qualifier": {
+                        "enum": [
+                          "eq",
+                          "lt"
+                        ]
+                      },
+                      "raw": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              },
+              "sodium": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "value",
+                      "unit",
+                      "qualifier",
+                      "raw"
+                    ],
+                    "properties": {
+                      "value": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "unit": {
+                        "enum": [
+                          "g",
+                          "mg",
+                          "kcal",
+                          "kJ"
+                        ]
+                      },
+                      "qualifier": {
+                        "enum": [
+                          "eq",
+                          "lt"
+                        ]
+                      },
+                      "raw": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "id": {
+                  "const": "per_100g"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "basis_amount": {
+                  "const": 100
+                },
+                "basis_unit": {
+                  "const": "g"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "id": {
+                  "const": "per_100ml"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "basis_amount": {
+                  "const": 100
+                },
+                "basis_unit": {
+                  "const": "ml"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "not_label"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "columns": {
+            "maxItems": 0
+          },
+          "warnings": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

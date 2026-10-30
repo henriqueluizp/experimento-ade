@@ -1,0 +1,27 @@
+# segredos
+.env
+.env.*
+!.env.example
+!**/.env.example
+*.pem
+*.key
+*secret*
+*token*
+id_rsa*
+config.json
+# execuções e estado local
+runs/
+.DS_Store
+.claude/
+.codex/
+.overclock-app/
+# caches e ambientes
+__pycache__/
+*.pyc
+.cache/
+.pytest_cache/
+.mypy_cache/
+node_modules/
+.venv/
+venv/
+env/

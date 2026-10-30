@@ -1,0 +1,14 @@
+# Laboratório descartável de isolamento e conflito
+
+Este cenário mede o fluxo do ADE; não altera o produto avaliado. Use clone descartável, sem remoto de escrita e sem dados pessoais. O operador prepara o mesmo estado inicial para cada ferramenta. Os prompts 07a e 07b são destinados a sessões diferentes, não à mesma conversa.
+
+1. Congele o commit do aplicativo e faça uma cópia independente para o laboratório. Com Git, pode usar `git clone --no-hardlinks CAMINHO_ORIGEM CAMINHO_NOVO`; escolha um destino novo no workspace. Verifique que ele está limpo e remova a possibilidade de push nesse clone pelo fluxo de configuração local, se houver remoto de escrita.
+2. Copie somente `lab/conflito-base/settings.json` do pacote para `ade-lab/settings.json` no clone. Faça commit dessa base de laboratório e registre o hash. Ela não precisa ser ligada ao aplicativo: é uma configuração sintética para forçar uma divergência verificável.
+3. Pelo ADE, crie duas tarefas a partir **desse mesmo commit** em branches/worktrees separados: `lab-a` e `lab-b`. Antes de enviar os prompts, registre diretórios e bases. Não criar B a partir do commit já modificado por A.
+4. Envie `07a-conflito.md` à tarefa A e `07b-conflito.md` à B. Na modalidade controlada, execute A até o fim e depois B. Na otimizada, execute ambas simultaneamente, respeitando o limite total de agentes e custo. Registre a diferença de modalidade.
+5. Antes de juntar as branches, confirme: A tem tamanho 10 e painel ativado; B tem tamanho 50 e contador ativado. Nenhuma deve incorporar automaticamente a alteração da outra. Registre commits e diffs.
+6. Crie a tarefa de integração a partir da base comum; incorpore A e depois B usando o mecanismo que a ferramenta oferecer. A divergência de `history_page_size` deve ser apresentada como conflito por um merge Git convencional; se outro mecanismo reconciliar sem conflito, registre o comportamento e confira se ambas as intenções foram explicitamente tratadas.
+7. A decisão do operador é `history_page_size = 10`, `review_panel = true`, `mobile_counter = true`. Envie `07c-integrar.md` somente nesta etapa. Verifique JSON válido, ausência de marcadores, valores finais e preservação dos arquivos não envolvidos. Não fazer push/PR/merge remoto.
+8. Registre ajuda exigida, segundos até localizar o conflito, suporte visual, comentários inline, como a resolução foi encaminhada e se foi possível desfazer a integração preservando as branches. Não excluir cópias ou alterações para melhorar a nota.
+
+Não considerar “o agente resolveu tudo pelo terminal” como comprovação de interface de conflito nativa. Registre separadamente êxito final e esforço do operador. Este laboratório pode rodar sobre um pequeno repositório de teste comum se algum produto não exigir implementação pronta; mantenha a mesma escolha para todos os candidatos daquela rodada.

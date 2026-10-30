@@ -1,0 +1,51 @@
+{
+  "protocol_version": "1.2",
+  "mode": "controlled",
+  "max_agents": 1,
+  "coding_agent": "PREENCHER",
+  "coding_agent_version": "PREENCHER",
+  "coding_model": "PREENCHER",
+  "reasoning_effort": "PREENCHER_OU_NAO_EXPOSTO",
+  "ade_version": "PREENCHER_POR_EXECUCAO",
+  "vision": {
+    "provider": "gemini",
+    "model": "gemini-2.5-flash",
+    "temperature": 0,
+    "api_key_env": "VISION_API_KEY",
+    "real_access_verified": false
+  },
+  "limits": {
+    "initial_minutes": 60,
+    "evolution_minutes": 30,
+    "mobile_minutes": 10,
+    "recovery_minutes": 15,
+    "coding_usd": 10,
+    "vision_usd": 2,
+    "budget_accepted": false
+  },
+  "permissions_inventory": "PREENCHER",
+  "dependency_lockfile_frozen": false,
+  "real_photo_corpus_ready": false,
+  "mobile_https_verified": false,
+  "evolution_session": "same_chat",
+  "additional_modules": {
+    "cold_resume": false,
+    "ten_turn_context": false,
+    "concurrent_agents": false,
+    "agent_handoff": false,
+    "remote_pr_ci": false,
+    "additional_budget_usd": null,
+    "additional_budget_accepted": false
+  },
+  "required_tools": [
+    "orca",
+    "paseo",
+    "thinkrail"
+  ],
+  "optional_tools": [
+    "maestri",
+    "conductor",
+    "superset"
+  ],
+  "comparison_group": "PREENCHER_AGENTE_HARNESS_MODELO"
+}
