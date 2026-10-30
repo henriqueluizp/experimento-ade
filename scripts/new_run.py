@@ -24,7 +24,7 @@ def tree_hash(folder):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--id", required=True)
-    parser.add_argument("--tool", required=True, choices=["baseline", "orca", "paseo", "maestri", "thinkrail", "pi-baseline", "superset", "conductor"])
+    parser.add_argument("--tool", required=True, choices=["baseline", "orca", "paseo", "maestri", "thinkrail", "pi-baseline", "superset", "conductor", "overclock"])
     parser.add_argument("--config", type=Path, default=ROOT / "config.template.json")
     args = parser.parse_args()
     if not re.fullmatch(r"[a-z0-9][a-z0-9_-]{2,79}", args.id):
